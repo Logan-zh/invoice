@@ -1,5 +1,4 @@
 <?php 
-$dbname = "web";
 include_once 'DBConnection.php';
  ?>
 <!DOCTYPE html>
@@ -15,12 +14,11 @@ include_once 'DBConnection.php';
     <?php 
     include './layout/header.php';
     ?>
-    <div class="container">
-    <div class="row my-5">
-    <form action="save_invoice.php" method="POST" class='col-12'>
-        <div class="form-group">
-            <label for="period">期別:</label> 
-            <select name="period">
+    <div class="container mt-3">
+    <form action="save_invoice.php" method="POST" class='col-12 border form-row'>
+        <div class="form-group col-6">
+            <label for="period">期別：</label> 
+            <select name="period" class='form-control'>
                 <option value="1">1,2月</option>
                 <option value="2">3,4月</option>
                 <option value="3">5,6月</option>
@@ -29,25 +27,33 @@ include_once 'DBConnection.php';
                 <option value="6">11,12月</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="year">年分:</label>
-            <select name="year">
+        <div class="form-group col-6">
+            <label for="year">年分：</label>
+            <select name="year" class='form-control'>
                 <option value="2020">2020</option>
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="code">獎號</label>
-            <input nane='code' type="text">
+        <div class="form-group col-12">
+            <label for="cost">獎號：</label>
+            <div class="form-row">
+                <div class="col-3">
+                    <input id='cost' name='cost' type="text" class='form-control'>
+                </div>
+                <div class="col-9">
+                    <input id='number' name='number' type="number" class='form-control'>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="cost">花費</label>
-            <input name='cost' type="text">
+        <div class="form-group col-12">
+            <label for="cost">花費：</label>
+            <input id='cost' name='code' type="text" class='form-control'>
         </div>
-        <input type="submit" value="儲存">
+        <div class="form-group col-12 text-right">
+        <input type="submit" value="儲存" class='btn btn-primary'>
+        </div>
     </form>
-    </div>
     </div>
 </body>
 </html>
