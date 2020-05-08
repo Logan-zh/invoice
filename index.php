@@ -1,6 +1,3 @@
-<?php 
-include_once 'DBConnection.php';
- ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +12,7 @@ include_once 'DBConnection.php';
     include './layout/header.php';
     ?>
     <div class="container mt-3">
-    <form action="save_invoice.php" method="POST" class='col-12 border form-row'>
+    <form action="save_invoice.php" method="POST" class='col-12 border form-row p-3'>
         <div class="form-group col-6">
             <label for="period">期別：</label> 
             <select name="period" class='form-control'>
@@ -50,7 +47,21 @@ include_once 'DBConnection.php';
             <label for="expend">花費：</label>
             <input id='expend' name='expend' type="text" class='form-control'>
         </div>
-        <div class="form-group col-12 text-right">
+        <div class="col-8 text-danger">
+        <?php
+        if(isset($_GET['status'])){
+        switch ($_GET['status']){
+            case '0':
+                echo '無效';
+            break;
+            case '1':
+                echo '建立中';
+            break;
+            }
+        }
+        ?>
+        </div>
+        <div class="form-group col-4 text-right">
         <input type="submit" value="儲存" class='btn btn-primary'>
         </div>
     </form>
