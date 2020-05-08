@@ -36,10 +36,10 @@ include_once 'DBConnection.php';
             </select>
         </div>
         <div class="form-group col-12">
-            <label for="cost">獎號：</label>
+            <label for="code">獎號：</label>
             <div class="form-row">
                 <div class="col-3">
-                    <input id='cost' name='cost' type="text" class='form-control'>
+                    <input id='code' name='code' type="text" class='form-control'>
                 </div>
                 <div class="col-9">
                     <input id='number' name='number' type="number" class='form-control'>
@@ -47,8 +47,8 @@ include_once 'DBConnection.php';
             </div>
         </div>
         <div class="form-group col-12">
-            <label for="cost">花費：</label>
-            <input id='cost' name='code' type="text" class='form-control'>
+            <label for="expend">花費：</label>
+            <input id='expend' name='expend' type="text" class='form-control'>
         </div>
         <div class="form-group col-12 text-right">
         <input type="submit" value="儲存" class='btn btn-primary'>
