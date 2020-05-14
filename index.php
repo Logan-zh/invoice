@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>統一發票管理系統</title>
     <link rel="stylesheet" href="css/style.css">
-    <?php include 'cdn/CDN.php'; ?>
 </head>
 <body>
     <?php 
@@ -52,10 +51,10 @@
         if(isset($_GET['status'])){
         switch ($_GET['status']){
             case '0':
-                echo '無效';
+                echo '<p class="info">無效</p>';
             break;
             case '1':
-                echo '建立中';
+                echo '<p class="info">建立中</p>';
             break;
             }
         }
@@ -66,5 +65,10 @@
         </div>
     </form>
     </div>
+        <script>
+            setTimeout(() => {
+                document.querySelector('.info').innerHTML = "";
+            }, 3000);
+        </script>
 </body>
 </html>

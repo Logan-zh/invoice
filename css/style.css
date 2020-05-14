@@ -1,0 +1,12 @@
+.invoice-list ul{
+    list-style: none;
+}
+.invoice-list li{
+    display: inline;
+    border:1px solid;
+    padding:2px;
+    margin:2px;
+}
+.invoice-list a{
+    text-decoration:none;
+}
