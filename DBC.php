@@ -150,4 +150,12 @@
         }
         echo "</table>";
     }
+
+
+    function TRUNCATE(){
+        global $pdo;
+        $sql = "TRUNCATE `invoice`.`invoice`";
+        $resoult = $pdo->exec($sql);
+        return $resoult;
+    }
 ?>
