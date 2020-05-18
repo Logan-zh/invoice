@@ -38,7 +38,7 @@
         }else{
             $sql = "select * from `$table` where `id` = '$arg'";
         }
-            $rows = $pdo->query($sql)->fetchAll();
+            $rows = $pdo->query($sql)->fetch();
             return $rows;
     }
 
@@ -46,8 +46,16 @@
     // print_r(num('invoice',"`year`='2022'"));
     function num($table,$arg=1){
         global $pdo;
-        $sql = "select count(*) from `$table` where $arg" ;
-        $rows = $pdo->query($sql)->fetch();
+        if(is_array($arg)){
+            foreach($arg as $key => $value){
+                $tmp[] = "`$key` = '$value'";
+            }
+                $tmp2 = implode('&&',$tmp);
+                $sql = "select count(*) from `$table` where $tmp2" ;
+        }else{
+            $sql = "select count(*) from `$table` where $arg" ;
+        }
+        $rows = $pdo->query($sql)->fetchColumn();
         return $rows;
     }
 
