@@ -2,9 +2,14 @@
     $dbname = 'invoice';
     $dsn = "mysql:host=localhost;charset=utf8;dbname=$dbname";
     $pdo = new pdo($dsn,'root','');
-    session_start();
+    // session_start();
 
-    // print_r(all('invoice',['id'=>'22']));
+    function to($url){
+        header("location:".$url);
+    }
+
+    //回傳全部
+    // print_r(all('invoice'));
     function all($table,$arg=1){
         global $pdo;
         if(is_array($arg)){
@@ -15,38 +20,38 @@
         }else{
             $sql = "select * from `$table` where $arg";
         }
-        
         $rows = $pdo->query($sql)->fetchALL();
         return $rows;
     }
 
-    // print_r(find('invoice',['year'=>'2021']));
+    //搜尋資料
+    // print_r(find('invoice',2));
     function find($table,$arg=1){
         global $pdo;
         $sql = "select * from `$table`";
         if(is_array($arg)){
-            $key = array_keys($arg);
             foreach($arg as $key => $value){
                 $tmp[] = "`$key` = '$value'";
             }
                 $tmp2 = implode('&&',$tmp);
                 $sql = "select * from `$table` where $tmp2";
+        }else{
+            $sql = "select * from `$table` where `id` = '$arg'";
         }
-            // echo $sql."<br>";
             $rows = $pdo->query($sql)->fetchAll();
             return $rows;
     }
 
-    function num($table,...$arg){
+    //計算筆數
+    // print_r(num('invoice',"`year`='2022'"));
+    function num($table,$arg=1){
         global $pdo;
-        $sql = "select count(*) from `$table`" ;
-        if(isset($arg[0])){
-            $tmp = implode(' ',$arg);
-            $sql .= $tmp;
-        }
+        $sql = "select count(*) from `$table` where $arg" ;
         $rows = $pdo->query($sql)->fetch();
         return $rows;
     }
+
+    //刪除資料
     // delete('invoice',['id'=>26]);
     function delete($table,$arg=1){
         global $pdo;
@@ -61,27 +66,20 @@
         return $rows;
     }
 
-    // insert('invoice','`code`,`number`,`period`,`expend`,`year`',"'KD','20015932','3','500','2020'");
-
-    // insert('invoice',['code'=>'KE','number'=>'17935469','period'=>'2','expend'=>'500','year'=>'2021']);
-
+    //新增資料
+    // print_r(insert('invoice',['code'=>'KE','number'=>'17935469','period'=>'2','expend'=>'500','year'=>'2021']));
     function insert($table ,$arg){
         global $pdo;
-        // if(isset($arg[0])){
-        //     $sql = "insert into `$table`($arg[0]) value($arg[1])";
-        //     $resoult = $pdo->exec($sql);
-        //     var_dump($resoult);
-        // }
         $key = array_keys($arg);
         $str1 = "(`".implode('`,`',$key)."`)";
-        $str2 = "('".implode(',',$arg)."')";
+        $str2 = "('".implode("','",$arg)."')";
         $sql = "insert into `$table`$str1 values $str2";
         $resoult = $pdo->exec($sql);
         return $resoult;
     }
 
-        // update('invoice',['id'=>'23','code'=>'KE','number'=>'17935469','period'=>'4','expend'=>'650','year'=>'2020']);
-
+    //修改指定ID資料
+    // update('invoice',['id'=>'23','code'=>'KE','number'=>'17935469','period'=>'4','expend'=>'650','year'=>'2020']);
     function update($table ,$arg){
         global $pdo;
         if(is_array($arg)){
@@ -97,8 +95,8 @@
         }
     }
 
+    //有ID就修改，沒有就新增
     // save('invoice',['id'=>'29','code'=>'RL','number'=>'13297369','period'=>'3','expend'=>'199','year'=>'2022']);
-
     function save($table ,$arg=0){
         global $pdo;
         if(isset($arg['id'])){
@@ -119,40 +117,17 @@
         return $resoult;
     }
 
+    //直接輸入SQL指令
     // print_r(query("select * from `invoice` where `year` = '2020'"));
-
     function query($query){
         global $pdo;
         return $rows = $pdo->query($query)->fetchAll();
     }
 
-    // test('a',['id'=>1,'year'=>2,'u'=>3]);
-
-    // function test($a,$arg){
-    //     foreach($arg as $key => $value){
-    //     $tmp[] = sprintf("`%s` = '%s'",$key,$value);
-    //     $t = implode("&&",$tmp);
-        
-    //     $tmp2[] = "`".$key."` = '".$value."'";
-    //     $tt = implode("&&",$tmp2);
-
-    //     }
-    //     print_r( $t );echo "<br>";
-
-    //     print_r($tt);echo "<br>";
-    // }
-
-    // $a = ['add'=>'2','bdd'=>'3','cdd'=>'4','ddd'=>'5'];
-
-    // $k = array_keys($a);
-    // print_r($k);echo "<br>";
-    // $str = "(`".implode("`,`",$k)."`)";
-    // $str2= "('".implode("','",$a)."')";
-    // echo $str.$str2;
-
-    function ls($per){
+    //顯示資料
+    function ls($per=1){
         global $pdo;
-        $sql = "select * from `invoice` where `period` = $per order by `year` ";
+        $sql = "select * from `invoice` where ".$per." order by `year` ";
         $rows = $pdo->query($sql)->fetchAll();
         echo "<table class='table'>";
         echo "<tr>";

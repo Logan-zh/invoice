@@ -18,44 +18,50 @@
         <div class="row">
             <div class="col-12">
               <div class="list-group list-group-horizontal" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="period01"          data-toggle="list" href="#period1">第1期</a>
-                <a class="list-group-item list-group-item-action" id="period02"     data-toggle="list"      href="#period2">第2期</a>
-                <a class="list-group-item list-group-item-action" id="period03"     data-toggle="list"      href="#period3">第3期</a>
-                <a class="list-group-item list-group-item-action" id="period04"     data-toggle="list"      href="#period4">第4期</a>
-                <a class="list-group-item list-group-item-action" id="period05"     data-toggle="list"      href="#period5">第5期</a>
-                <a class="list-group-item list-group-item-action" id="period06"     data-toggle="list"      href="#period6">第6期</a>
+                <a class="list-group-item list-group-item-action active" id="period00" data-toggle="list" href="#periodAll">全部</a>
+                <a class="list-group-item list-group-item-action" id="period01" data-toggle="list" href="#period1">第1期</a>
+                <a class="list-group-item list-group-item-action" id="period02" data-toggle="list" href="#period2">第2期</a>
+                <a class="list-group-item list-group-item-action" id="period03" data-toggle="list" href="#period3">第3期</a>
+                <a class="list-group-item list-group-item-action" id="period04" data-toggle="list" href="#period4">第4期</a>
+                <a class="list-group-item list-group-item-action" id="period05" data-toggle="list" href="#period5">第5期</a>
+                <a class="list-group-item list-group-item-action" id="period06" data-toggle="list" href="#period6">第6期</a>
               </div>
             </div>
                     <div class="col-12">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="period1">
+                          <div class="tab-pane fade show active" id="periodAll">
                             <?php
-                                ls(1);
+                                ls();
+                            ?>
+                          </div>
+                          <div class="tab-pane fade" id="period1">
+                            <?php
+                                ls("`period` = 1");
                             ?>
                           </div>
                           <div class="tab-pane fade" id="period2">
                             <?php
-                                ls(2);
+                                ls("`period` = 2");
                             ?>
                           </div>
                           <div class="tab-pane fade" id="period3">
                             <?php
-                                ls(3);
+                                ls("`period` = 3");
                             ?>
                           </div>
                           <div class="tab-pane fade" id="period4">
                             <?php
-                                ls(4);
+                                ls("`period` = 4");
                             ?>
                           </div>
                           <div class="tab-pane fade" id="period5">
                             <?php
-                                ls(5);
+                                ls("`period` = 5");
                             ?>
                           </div>
                           <div class="tab-pane fade" id="period6">
                             <?php
-                                ls(6);
+                                ls("`period` = 6");
                             ?>
                         </div>
                     </div>
