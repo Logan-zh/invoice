@@ -32,14 +32,12 @@
         echo "<tr><td>期別：</td><td>".$_GET['period']."</td></tr>";
 
         $aw = $_GET['aw'];
-
         $data = [
             'year' => $_GET['year'],
             'period' => $_GET['period'],
             'type' => $award_type[$_GET['aw']][1],
         ];
         $award_nums = num('award_number',$data);
-
         echo "<tr><td>獎號數量：</td><td>". $award_nums."</td></tr>";
 
         $award_numbers = all('award_number',$data);

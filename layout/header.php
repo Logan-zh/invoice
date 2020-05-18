@@ -13,7 +13,6 @@
                     <a class="dropdown-item" href="invoice.php?period=<?=ceil(date('n')/2)?>">當期獎號</a>
                   </div>
                 </div>
-                <a class="btn btn-primary" href="#">對獎</a>
               </div>
           </div>
       </nav>
