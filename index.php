@@ -6,12 +6,12 @@
     <title>統一發票管理系統</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="container">
     <?php 
     include './layout/header.php';
     ?>
-    <div class="container mt-3">
-    <form action="save_invoice.php" method="POST" class='col-12 border form-row p-3'>
+    <div class="container border">
+    <form action="save_invoice.php" method="POST" class='col-12 form-row '>
         <div class="form-group col-6">
             <label for="period">期別：</label> 
             <select name="period" class='form-control'>
