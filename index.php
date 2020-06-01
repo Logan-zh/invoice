@@ -10,8 +10,8 @@
     <?php 
     include './layout/header.php';
     ?>
-    <div class="container mt-5">
-    <form action="save_invoice.php" method="POST" class='col-12 form-row border'>
+    <div class="container mt-3">
+    <form action="save_invoice.php" method="POST" class='col-12 form-row border shadow pt-3'>
         <div class="form-group col-6">
             <label for="period">期別：</label> 
             <select name="period" class='form-control'>

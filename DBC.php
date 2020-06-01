@@ -135,8 +135,16 @@
     //顯示資料
     function ls($per=1){
         global $pdo;
-        $sql = "select * from `invoice` where ".$per." order by `year` ";
-        $rows = $pdo->query($sql)->fetchAll();
+        if(is_array($per)){
+            foreach($per as $key => $value){
+                $tmp[]=sprintf("`%s`='%s'",$key,$value);
+            }
+                $sql = "select * from `invoice` where".implode('&&',$tmp)." order by `year` desc ";
+                $rows = $pdo->query($sql)->fetchAll();
+            }else{
+                $sql = "select * from `invoice` where ".$per." order by `year` desc ";
+                $rows = $pdo->query($sql)->fetchAll();
+            }
         echo "<table class='table'>";
         echo "<tr>";
         echo "<td>編號</td>";
