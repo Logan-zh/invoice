@@ -48,7 +48,7 @@
                 $len = $award_type[$aw][2];
                 $start = 8-$len;
                 if(substr($in['number'],$start,$len) == substr($an['number'],$start,$len)){
-                echo "<tr><td>".$in['number']."</td><td>中獎了</td></tr>";
+                echo "<tr><td>".$in['code'].$in['number']."</td><td>中獎了</td></tr>";
                 }
             }
         }

@@ -16,7 +16,7 @@
 
     <h3 class='text-center mt-2'>發票列表</h3>
     <form action="list.php">
-    <select name="year" onchange="sub()">
+    <select name="year" onchange="sub()" class="form-control my-2">
       <?php for($i=2018 ; $i<2025 ;$i++){?>
       <option value="<?=$i?>"
       <?php if(isset($_GET['year'])){

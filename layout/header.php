@@ -8,9 +8,10 @@
                 <a class="btn btn-primary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" href="invoice.php">
                 各期獎號
                 </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu">
                   <a class="dropdown-item" href="add_invoice.php">新增獎號</a>
-                  <a class="dropdown-item" href="invoice.php?period=<?=ceil(date('n')/2)?>">當期獎號</a>
+                  <a class="dropdown-item" href="invoice.php?period=<?=ceil(date('n')/2)?>">單期兌獎</a>
+                  <a class="dropdown-item" href="a.php">整年兌獎</a>
                 </div>
               </div>
             </div>
