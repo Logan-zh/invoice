@@ -66,49 +66,77 @@
                 <td><?=$year?>年 <?=$monthStr[$period]?></td>
             </tr>
             <tr>
+            <form action="award_edit.php" method="post">
                 <td>特別獎</td>
-                <td><?php if(!empty($num1['number'])){echo sprintf("%08d",$num1['number']);}?><br>同期統一發票收執聯8位數號碼與特別獎號碼相同者獎金1,000萬元</td>
-                <td><a href="award.php?aw=1&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
+                <td><input type="text" name='number' value='<?php if(!empty($num1['number'])){echo sprintf("%08d",$num1['number']);}?>'>
+                <?php 
+                if(!empty($num1))echo "<input type='hidden' name='id' value='".$num1['id']."'>";
+                ?>
+                <br>同期統一發票收執聯8位數號碼與特別獎號碼相同者獎金1,000萬元</td>
+                <td><a class='btn btn-primary' href="award.php?aw=1&&year=<?=$year?>&&period=<?=$period?>">兌獎</a><input type="submit" class='btn alert-primary ml-2' value="修改"></td>
+            </form>
             </tr>
             <tr>
+            <form action="award_edit.php" method="post">
                 <td>特獎</td>
-                <td><?php if(!empty($num2['number'])){echo sprintf("%08d",$num2['number']);}?><br>同期統一發票收執聯8位數號碼與特獎號碼相同者獎金200萬元</td>
-                <td><a href="award.php?aw=2&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
+                <td><input type="text" name='number' value='<?php 
+                if(!empty($num2['number'])){echo sprintf("%08d",$num2['number']).'';}
+                ?>'>
+                <?php 
+                if(!empty($num2)) echo "<input type='hidden' name='id' value='".$num2['id']."'>";
+                ?>
+                <br>同期統一發票收執聯8位數號碼與特獎號碼相同者獎金200萬元</td>
+                <td><a class='btn btn-primary' href="award.php?aw=2&&year=<?=$year?>&&period=<?=$period?>">兌獎</a><input type="submit" class='btn alert-primary ml-2' value="修改"></td>
+            </form>
             </tr>
             <tr>
+            <form action="award_edit.php" method="post">
                 <td>頭獎</td>
-                <td><?php foreach($num3 as $num){echo sprintf("%08d",$num['number']).'、';}?><br>同期統一發票收執聯8位數號碼與頭獎號碼相同者獎金20萬元</td>
-                <td><a href="award.php?aw=3&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
+                <td><?php foreach($num3 as $num){
+                    echo "<input type='text' name='number[]' value='".sprintf("%08d",$num['number'])."'>";
+                    echo "<input type='hidden' name='id[]' value='".$num['id']."'>";
+                    }?>
+                    <br>同期統一發票收執聯8位數號碼與頭獎號碼相同者獎金20萬元</td>
+                <td><a class='btn btn-primary' href="award.php?aw=3&&year=<?=$year?>&&period=<?=$period?>">兌獎</a><input type="submit" class='btn alert-primary ml-2' value="修改"></td>
+            </form>
             </tr>
             <tr>
                 <td>二獎</td>
                 <td>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金4萬元</td>
-                <td><a href="award.php?aw=4&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
+                <td><a class='btn btn-primary' href="award.php?aw=4&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
             </tr>
             <tr>
                 <td>三獎</td>
                 <td>同期統一發票收執聯末6 位數號碼與頭獎中獎號碼末6 位相同者各得獎金1萬元</td>
-                <td><a href="award.php?aw=5&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
+                <td><a class='btn btn-primary' href="award.php?aw=5&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
             </tr>
             <tr>
                 <td>四獎</td>
                 <td>同期統一發票收執聯末5 位數號碼與頭獎中獎號碼末5 位相同者各得獎金4千元</td>
-                <td><a href="award.php?aw=6&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
+                <td><a class='btn btn-primary' href="award.php?aw=6&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
             </tr>
             <tr>
                 <td>五獎</td>
                 <td>同期統一發票收執聯末4 位數號碼與頭獎中獎號碼末4 位相同者各得獎金1千元</td>
-                <td><a href="award.php?aw=7&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
+                <td><a class='btn btn-primary' href="award.php?aw=7&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
             </tr>
             <tr>
                 <td>六獎</td>
                 <td>同期統一發票收執聯末3 位數號碼與 頭獎中獎號碼末3 位相同者各得獎金2百元</td>
-                <td><a href="award.php?aw=8&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
+                <td><a class='btn btn-primary' href="award.php?aw=8&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
             </tr>
             <tr>
+            <form action="award_edit.php" method="post">
                 <td>增開六獎</td>
-                <td><?php if(!empty($num4['number'])){echo sprintf("%03d",$num4['number']);}?><br>同期統一發票收執聯末3位數號碼與增開六獎號碼相同者各得獎金2百元</td>
-                <td><a href="award.php?aw=9&&year=<?=$year?>&&period=<?=$period?>">兌獎</a></td>
+                <td><?php 
+                if(!empty($num4['number'])){
+                    echo "<input type='text' name='number' value='".sprintf("%03d",$num4['number'])."'>";
+                    echo "<input type='hidden' name='id' value='".$num4['id']."'>";
+                }
+                ?>
+                <br>同期統一發票收執聯末3位數號碼與增開六獎號碼相同者各得獎金2百元</td>
+                <td><a class='btn btn-primary' href="award.php?aw=9&&year=<?=$year?>&&period=<?=$period?>">兌獎</a><input type="submit" class='btn alert-primary ml-2' value="修改"></td>
+            </form>
             </tr>
         </table>
     </div>
