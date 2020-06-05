@@ -10,7 +10,7 @@
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="add_invoice.php">新增獎號</a>
-                  <a class="dropdown-item" href="invoice.php?year=<?=date('Y')?>&period=<?=ceil(date('n')/2)?>">獎號修改</a>
+                  <a class="dropdown-item" href="invoice.php?year=<?=date('Y')?>&period=<?=ceil((date('n')-4)/2)?>">查詢獎號</a>
                   <a class="dropdown-item" href="a.php">整年兌獎</a>
                 </div>
               </div>

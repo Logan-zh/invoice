@@ -39,6 +39,7 @@ for($y=$year+1 ; $y<$year+5; $y++){?>
 
         $bonus=0;
         $ins=[];
+        $aw1=0;$aw2=0;$aw3=0;$aw4=0;$aw5=0;$aw6=0;$aw7=0;$aw8=0;$aw9=0;
             for($j=1;$j<=6;$j++){
                 for($k=1;$k<=4;$k++){
                     $data = [
@@ -46,6 +47,7 @@ for($y=$year+1 ; $y<$year+5; $y++){?>
                         'period' => $j,
                         'type' => $k,
                     ];
+                    
                     $award_numbers = all('award_number',$data);
                     $invoices = all('invoice',['year'=>$year,'period'=>$j]);
                     for($l=1;$l<=9;$l++){
@@ -56,9 +58,46 @@ for($y=$year+1 ; $y<$year+5; $y++){?>
                                 if(substr($in['number'],$start,$len) == substr($an['number'],$start,$len)){
                                     if(!in_array($in['number'],$ins)){
                                         echo "<p>發票".$in['code'].$in['number']."中了".$l."獎</p>";
-                                        echo "<p>獎金".$award_type[$l][3]."元</p>";
+                                        echo "<p>小計".$award_type[$l][3]."元</p>";
                                         $ins[] = $in['number'];
                                         $bonus = ($bonus + $award_type[$l][3]);
+                                        $data = [
+                                            'number'=>$in['number'],
+                                            'period'=>$an['period'],
+                                            'reward'=>$award_type[$l][3],
+                                            'expend'=>$in['expend'],
+                                            'year'=>$in['year'],
+                                        ];
+                                        save('reward_record',$data);
+                                        switch($l){
+                                            case 1:
+                                                $aw1++;
+                                            break;
+                                            case 2:
+                                                $aw2++;
+                                            break;
+                                            case 3:
+                                                $aw3++;
+                                            break;
+                                            case 4:
+                                                $aw4++;
+                                            break;
+                                            case 5:
+                                                $aw5++;
+                                            break;
+                                            case 6:
+                                                $aw6++;
+                                            break;
+                                            case 7:
+                                                $aw7++;
+                                            break;
+                                            case 8:
+                                                $aw8++;
+                                            break;
+                                            case 9:
+                                                $aw9++;
+                                            break;
+                                        }
                                     }
                                 }
                             }
@@ -70,7 +109,16 @@ for($y=$year+1 ; $y<$year+5; $y++){?>
             if($bonus == 0){
                 echo '可憐吶!沒有中獎。';
             }else{
-                echo "<p>總獎金：".$bonus."元</p>";
+                if($aw1>0){echo '特獎'.$aw1.'張<br>';}
+                if($aw2>0){echo '特獎'.$aw2.'張<br>';}
+                if($aw3>0){echo '頭獎'.$aw3.'張<br>';}
+                if($aw4>0){echo '二獎'.$aw4.'張<br>';}
+                if($aw5>0){echo '三獎'.$aw5.'張<br>';}
+                if($aw6>0){echo '四獎'.$aw6.'張<br>';}
+                if($aw7>0){echo '五獎'.$aw7.'張<br>';}
+                if($aw8>0){echo '六獎'.$aw8.'張<br>';}
+                if($aw9>0){echo '增開六獎'.$aw9.'張';}
+                echo "<p>合計：".$bonus."元</p>";
             }
             
 ?>

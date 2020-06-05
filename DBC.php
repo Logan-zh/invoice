@@ -145,25 +145,26 @@
                 $sql = "select * from `invoice` where ".$per." order by `year` desc ";
                 $rows = $pdo->query($sql)->fetchAll();
             }
-        echo "<table class='table'>";
-        echo "<tr>";
-        echo "<td>編號</td>";
-        echo "<td>編碼</td>";
-        echo "<td>號碼</td>";
-        echo "<td>期別</td>";
-        echo "<td>消費</td>";
-        echo "<td>年份</td>";
-        echo "</tr>";
+        echo "<div class='row justify-content-center m-2'><div class='col-1 border'>編號</div>";
+        echo "<div class='col-2 border'>編碼</div>";
+        echo "<div class='col-2 border'>號碼</div>";
+        echo "<div class='col-2 border'>期別</div>";
+        echo "<div class='col-2 border'>消費</div>";
+        echo "<div class='col-2 border'>年份</div>";
+        echo "<div class='col-1 border'>操作</div></div>";
         foreach($rows as $row){
-        echo "<tr>";
-        echo "<td>".$row['id']."</td>";
-        echo "<td>".$row['code']."</td>";
-        echo "<td>".$row['number']."</td>";
-        echo "<td>".$row['period']."</td>";
-        echo "<td>".$row['expend']."</td>";
-        echo "<td>".$row['year']."</td>";
-        echo "</tr>";
-        }
+        echo "<form action='in_edit.php' method='POST'>";
+        echo "<div class='row justify-content-center mx-2'>";
+        echo "<input class='col-1 form-control' name='id' type='text' value='".$row['id']."'>";
+        echo "<input class='col-2 form-control' name='code' type='text' value='".$row['code']."'>";
+        echo "<input class='col-2 form-control' name='number' type='text' value='".$row['number']."'>";
+        echo "<input class='col-2 form-control' name='period' type='text' value='".$row['period']."'>";
+        echo "<input class='col-2 form-control' name='expend' type='text' value='".$row['expend']."'>";
+        echo "<input class='col-2 form-control' name='year' type='text' value='".$row['year']."'>";
+        echo "<input class='col-1 form-control' type='submit' value='修改'>";
+        echo "</div>";
+        echo "</form>";
+    }
         echo "</table>";
     }
 

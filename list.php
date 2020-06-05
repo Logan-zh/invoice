@@ -19,8 +19,12 @@
     <select name="year" onchange="sub()" class="form-control my-2">
       <?php for($i=2018 ; $i<2025 ;$i++){?>
       <option value="<?=$i?>"
-      <?php if(isset($_GET['year'])){
+      <?php if(!empty($_GET['year'])){
         if($i==$_GET['year']){
+          echo "selected='selected'";
+        }
+      }else{
+        if($i==date('Y')){
           echo "selected='selected'";
         }
       } ?> 
@@ -29,7 +33,7 @@
     </select>
     </form>
 <?php
-  if(isset($_GET['year'])){
+  if(!empty($_GET['year'])){
     ?>
             <div class="row">
             <div class="col-12">
@@ -102,37 +106,37 @@
                         <div class="tab-content" id="nav-tabContent">
                           <div class="tab-pane fade show active shadow" id="periodAll">
                             <?php
-                                ls();
+                                ls(['year'=>date('Y')]);
                             ?>
                           </div>
                           <div class="tab-pane fade shadow" id="period1">
                             <?php
-                                ls("`period` = 1");
+                                ls(['year'=>date('Y'),'period'=>6]);
                             ?>
                           </div>
                           <div class="tab-pane fade shadow" id="period2">
                             <?php
-                                ls("`period` = 2");
+                                ls(['year'=>date('Y'),'period'=>2]);
                             ?>
                           </div>
                           <div class="tab-pane fade shadow" id="period3">
                             <?php
-                                ls("`period` = 3");
+                                ls(['year'=>date('Y'),'period'=>3]);
                             ?>
                           </div>
                           <div class="tab-pane fade shadow" id="period4">
                             <?php
-                                ls("`period` = 4");
+                                ls(['year'=>date('Y'),'period'=>4]);
                             ?>
                           </div>
                           <div class="tab-pane fade shadow" id="period5">
                             <?php
-                                ls("`period` = 5");
+                                ls(['year'=>date('Y'),'period'=>5]);
                             ?>
                           </div>
                           <div class="tab-pane fade shadow" id="period6">
                             <?php
-                                ls("`period` = 6");
+                                ls(['year'=>date('Y'),'period'=>6]);
                             ?>
                         </div>
                     </div>

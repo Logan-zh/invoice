@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-06-01 02:11:08
+-- 產生時間： 2020-06-05 09:39:58
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.3
 
@@ -41,12 +41,12 @@ CREATE TABLE `award_number` (
 --
 
 INSERT INTO `award_number` (`id`, `year`, `period`, `number`, `type`) VALUES
-(1, 2020, 1, 12620024, 1),
-(2, 2020, 1, 39793895, 2),
-(3, 2020, 1, 67913945, 3),
-(4, 2020, 1, 9954061, 3),
-(5, 2020, 1, 54574947, 3),
-(6, 2020, 1, 7, 4);
+(1, 2020, 1, 12620029, 1),
+(2, 2020, 1, 12620098, 2),
+(3, 2020, 1, 67913940, 3),
+(4, 2020, 1, 9954065, 3),
+(5, 2020, 1, 54574941, 3),
+(6, 2020, 1, 8, 4);
 
 -- --------------------------------------------------------
 
@@ -68,11 +68,11 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`id`, `code`, `number`, `period`, `expend`, `year`) VALUES
-(1, 'AM', '20803755', 4, 9354, '2022'),
+(1, 'AM', '12620029', 1, 9354, '2020'),
 (2, 'DR', '37288319', 6, 7559, '2021'),
-(3, 'YO', '61311296', 3, 8247, '2020'),
-(4, 'GP', '17888930', 2, 1068, '2020'),
-(5, 'SW', '51288887', 5, 3426, '2020'),
+(3, 'YO', '61311008', 3, 8247, '2020'),
+(4, 'GP', '17888931', 2, 1068, '2020'),
+(5, 'SW', '51288008', 5, 3426, '2020'),
 (6, 'JN', '79109350', 6, 7077, '2021'),
 (7, 'AS', '84870988', 3, 2715, '2022'),
 (8, 'CT', '32444829', 4, 648, '2020'),
@@ -1070,6 +1070,35 @@ INSERT INTO `invoice` (`id`, `code`, `number`, `period`, `expend`, `year`) VALUE
 (1000, 'MS', '91693179', 4, 9069, '2021'),
 (1001, 'WE', '54574947', 1, 500, '2020');
 
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `reward_record`
+--
+
+CREATE TABLE `reward_record` (
+  `id` int(20) UNSIGNED NOT NULL,
+  `number` int(16) NOT NULL,
+  `period` int(2) NOT NULL,
+  `reward` int(20) NOT NULL,
+  `expend` int(128) NOT NULL,
+  `year` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `reward_record`
+--
+
+INSERT INTO `reward_record` (`id`, `number`, `period`, `reward`, `expend`, `year`) VALUES
+(1, 12620029, 1, 10000000, 9354, '0000-00-00'),
+(2, 12620029, 1, 10000000, 9354, '0000-00-00'),
+(5, 12620029, 1, 10000000, 9354, '0000-00-00'),
+(6, 74531098, 1, 200, 5417, '0000-00-00'),
+(7, 12620029, 1, 10000000, 9354, '0000-00-00'),
+(8, 74531098, 1, 200, 5417, '0000-00-00'),
+(9, 12620029, 1, 10000000, 9354, '0000-00-00'),
+(10, 74531098, 1, 200, 5417, '0000-00-00');
+
 --
 -- 已傾印資料表的索引
 --
@@ -1087,6 +1116,12 @@ ALTER TABLE `invoice`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `reward_record`
+--
+ALTER TABLE `reward_record`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
@@ -1101,6 +1136,12 @@ ALTER TABLE `award_number`
 --
 ALTER TABLE `invoice`
   MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `reward_record`
+--
+ALTER TABLE `reward_record`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

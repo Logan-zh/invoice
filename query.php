@@ -68,7 +68,7 @@
             <tr>
             <form action="award_edit.php" method="post">
                 <td>特別獎</td>
-                <td><input class='mx-1' type="text" name='number' value='<?php if(!empty($num1['number'])){echo sprintf("%08d",$num1['number']);}?>'>
+                <td><input type="text" name='number' value='<?php if(!empty($num1['number'])){echo sprintf("%08d",$num1['number']);}?>'>
                 <?php 
                 if(!empty($num1))echo "<input type='hidden' name='id' value='".$num1['id']."'>";
                 ?>
@@ -79,7 +79,7 @@
             <tr>
             <form action="award_edit.php" method="post">
                 <td>特獎</td>
-                <td><input class='mx-1' type="text" name='number' value='<?php 
+                <td><input type="text" name='number' value='<?php 
                 if(!empty($num2['number'])){echo sprintf("%08d",$num2['number']).'';}
                 ?>'>
                 <?php 
@@ -93,7 +93,7 @@
             <form action="award_edit.php" method="post">
                 <td>頭獎</td>
                 <td><?php foreach($num3 as $num){
-                    echo "<input class='mx-1' type='text' name='number[]' value='".sprintf("%08d",$num['number'])."'>";
+                    echo "<input type='text' name='number[]' value='".sprintf("%08d",$num['number'])."'>";
                     echo "<input type='hidden' name='id[]' value='".$num['id']."'>";
                     }?>
                     <br>同期統一發票收執聯8位數號碼與頭獎號碼相同者獎金20萬元</td>
@@ -130,7 +130,7 @@
                 <td>增開六獎</td>
                 <td><?php 
                 if(!empty($num4['number'])){
-                    echo "<input class='mx-1' type='text' name='number' value='".sprintf("%03d",$num4['number'])."'>";
+                    echo "<input type='text' name='number' value='".sprintf("%03d",$num4['number'])."'>";
                     echo "<input type='hidden' name='id' value='".$num4['id']."'>";
                 }
                 ?>
