@@ -40,24 +40,32 @@ for($y=$year+1 ; $y<$year+5; $y++){?>
         $bonus=0;
         $ins=[];
         $aw1=0;$aw2=0;$aw3=0;$aw4=0;$aw5=0;$aw6=0;$aw7=0;$aw8=0;$aw9=0;
+        
+        
+        
+        for($l=1;$l<=9;$l++){
+
+            
             for($j=1;$j<=6;$j++){
                 for($k=1;$k<=4;$k++){
                     $data = [
                         'year' => $year,
                         'period' => $j,
-                        'type' => $k,
+                        'type' =>$award_type[$l][1],
                     ];
                     
                     $award_numbers = all('award_number',$data);
                     $invoices = all('invoice',['year'=>$year,'period'=>$j]);
-                    for($l=1;$l<=9;$l++){
+
+
+
                         foreach($invoices as $in){
                             foreach($award_numbers as $an){
                                 $len = $award_type[$l][2];
                                 $start = 8-$len;
                                 if(substr($in['number'],$start,$len) == substr($an['number'],$start,$len)){
                                     if(!in_array($in['number'],$ins)){
-                                        echo "<p>發票".$in['code'].$in['number']."中了".$l."獎</p>";
+                                        echo '<p>'.$in['year'].'年第'.$in['period']."期發票".$in['code'].$in['number']."中了".$award_type[$l][0]."</p>";
                                         echo "<p>小計".$award_type[$l][3]."元</p>";
                                         $ins[] = $in['number'];
                                         $bonus = ($bonus + $award_type[$l][3]);
@@ -68,7 +76,10 @@ for($y=$year+1 ; $y<$year+5; $y++){?>
                                             'expend'=>$in['expend'],
                                             'year'=>$in['year'],
                                         ];
-                                        save('reward_record',$data);
+                                        $record=num('reward_record',$data);
+                                        if($record==0){
+                                            save('reward_record',$data);
+                                        }
                                         switch($l){
                                             case 1:
                                                 $aw1++;

@@ -48,15 +48,21 @@
                 $len = $award_type[$aw][2];
                 $start = 8-$len;
                 if(substr($in['number'],$start,$len) == substr($an['number'],$start,$len)){
-                echo "<tr><td>".$in['code'].$in['number']."</td><td>中獎了</td></tr>";
-                $data = [
-                    'number'=>$in['number'],
-                    'period'=>$an['period'],
-                    'reward'=>$award_type[$_GET['aw']][3],
-                    'expend'=>$in['expend'],
-                    'year'=>$in['year'],
-                ];
-                save('reward_record',$data);
+                    $data = [
+                        'number'=>$in['number'],
+                        'period'=>$an['period'],
+                        'reward'=>$award_type[$_GET['aw']][3],
+                        'expend'=>$in['expend'],
+                        'year'=>$in['year'],
+                    ];
+                    echo $record=num('reward_record',$data);
+                    if($record==0){
+                        echo "<tr><td>".$in['code'].$in['number']."</td><td>中獎了</td></tr>";
+                        save('reward_record',$data);
+                    }else{
+                        $re = find('reward_record',$data);
+                        echo "<tr><td>".$in['code'].$in['number']."</td><td>中過".$re['reward']."</td></tr>";
+                    }
                 }
             }
         }

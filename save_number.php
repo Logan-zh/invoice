@@ -41,6 +41,7 @@
         echo save($table,$data);
         }
     }
+    header('location:index.php');
     ?>
 </body>
 </html>

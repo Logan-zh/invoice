@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-06-05 09:39:58
+-- 產生時間： 2020-06-16 08:25:37
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.3
 
@@ -41,12 +41,18 @@ CREATE TABLE `award_number` (
 --
 
 INSERT INTO `award_number` (`id`, `year`, `period`, `number`, `type`) VALUES
-(1, 2020, 1, 12620029, 1),
-(2, 2020, 1, 12620098, 2),
+(1, 2020, 1, 12620024, 1),
+(2, 2020, 1, 39793895, 2),
 (3, 2020, 1, 67913940, 3),
 (4, 2020, 1, 9954065, 3),
 (5, 2020, 1, 54574941, 3),
-(6, 2020, 1, 8, 4);
+(6, 2020, 1, 7, 4),
+(7, 2020, 2, 91911374, 1),
+(8, 2020, 2, 8501338, 2),
+(9, 2020, 2, 57161318, 3),
+(10, 2020, 2, 23570653, 3),
+(11, 2020, 2, 47332279, 3),
+(12, 2020, 2, 519, 4);
 
 -- --------------------------------------------------------
 
@@ -101,7 +107,7 @@ INSERT INTO `invoice` (`id`, `code`, `number`, `period`, `expend`, `year`) VALUE
 (31, 'TM', '32627825', 3, 3047, '2020'),
 (32, 'UW', '34889130', 6, 7309, '2022'),
 (33, 'ZH', '24775737', 1, 6413, '2022'),
-(34, 'AR', '15145480', 1, 7524, '2020'),
+(34, 'AR', '54574941', 1, 7524, '2020'),
 (35, 'NE', '62707634', 1, 2783, '2022'),
 (36, 'TB', '36659565', 6, 9506, '2020'),
 (37, 'TX', '61064594', 4, 1622, '2020'),
@@ -1097,7 +1103,9 @@ INSERT INTO `reward_record` (`id`, `number`, `period`, `reward`, `expend`, `year
 (7, 12620029, 1, 10000000, 9354, '0000-00-00'),
 (8, 74531098, 1, 200, 5417, '0000-00-00'),
 (9, 12620029, 1, 10000000, 9354, '0000-00-00'),
-(10, 74531098, 1, 200, 5417, '0000-00-00');
+(10, 74531098, 1, 200, 5417, '0000-00-00'),
+(11, 54574941, 1, 10000000, 7524, '0000-00-00'),
+(12, 54574941, 1, 200000, 7524, '0000-00-00');
 
 --
 -- 已傾印資料表的索引
@@ -1129,7 +1137,7 @@ ALTER TABLE `reward_record`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `award_number`
 --
 ALTER TABLE `award_number`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '流水號', AUTO_INCREMENT=7;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '流水號', AUTO_INCREMENT=13;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `invoice`
@@ -1141,7 +1149,7 @@ ALTER TABLE `invoice`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `reward_record`
 --
 ALTER TABLE `reward_record`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
