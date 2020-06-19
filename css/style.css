@@ -10,3 +10,13 @@
 .invoice-list a{
     text-decoration:none;
 }
+.dbtn{
+    border:1px solid black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:5px;
+    margin:1px;
+    border-radius:10%;
+    color:red;
+}
